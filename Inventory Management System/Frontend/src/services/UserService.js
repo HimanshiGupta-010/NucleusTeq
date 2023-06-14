@@ -8,6 +8,12 @@ export const contact = (data) => {
     return myAxios.post('/api/contact/saveContact', data).then((response) => response.data)
 }
 
+export const login = (email, password) => {
+    return myAxios.post( '/api/users/login', { 
+        email: email, 
+        password: password }).then((response) => response.data)
+}
+
 // export const logIn = (user) => {
 //     return myAxios.post('api/users/login', user).then((response) => response.data)
 // }

@@ -79,7 +79,6 @@ const SignupForm = ({setIsLoggedIn}) => {
         }
     
         setIsLoggedIn(true);
-        toast.success("Account Created");
         const accountData = {
         ...formData
         };
@@ -93,15 +92,17 @@ const SignupForm = ({setIsLoggedIn}) => {
         console.log(finalData);
 
         //call server api for sending data
-        signUp(formData).then((response) => {
+        signUp(finalData).then((response) => {
             console.log(response)
             console.log("Success log")
+            toast.success("Account Created");
+
         }).catch((error) => {
+            toast.success("Registration failed");
             console.log(error)
             console.log("Error log")
         } )
-
-
+        
         navigate("/");
     }
 

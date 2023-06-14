@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-// import {logIn} from '../services/UserService';
+import {login} from '../services/UserService';
 
 
 
@@ -53,15 +53,16 @@ const LoginForm = ({setIsLoggedIn}) => {
         console.log(formData)
 
          //call server api for sending data
-        //  logIn(formData.email, formData.password)
-        //  .then(() => {
-        //    // Authentication successful, redirect to home page
-        //    navigate("/Home");
-        //  })
-        //  .catch((error) => {
-        //    // Authentication failed
-        //    console.log(error.message);
-        //  });
+         login(formData.email, formData.password)
+         .then((response) => {
+           // Authentication successful, redirect to home page
+           console.log(response)
+           navigate("/Home");
+         })
+         .catch((error) => {
+           // Authentication failed
+           console.log(error.message);
+         });
 
         if(formData.password === "H#1Ga7i@")
         {
